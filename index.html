@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        body{
+            padding: 150px;
+            background-image: url(imagem1.png);
+            background-size: 100vw 100vh;
+            color: aliceblue;
+        }
+
+
+        .quote-box-project {
+    text-align: center;
+    background-color: #000000;
+    padding: 30px 40px;
+    border-radius: 8px;
+    border-left: 8px solid #007bff;
+    position: relative;
+    opacity: 80%;
+    
+}
+.quote-box-project::before {
+    content: '“';
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    font-size: 6em;
+    color: rgba(0, 123, 255, 0.1);
+}
+.quote-box-project blockquote {
+    font-size: 1.5em;
+    font-style: italic;
+    min-height: 120px;
+    
+}
+.quote-box-project button {
+    background-color: #000000;
+    border-radius: 50px;
+    font-weight: bold;
+    color: azure;
+}
+
+    </style>
+</head>
+<body>
+    <div class="exemplo-interativo quote-box-project">
+    <blockquote id="citacao">
+        <p id="textoCitacao">...</p>
+        <footer id="autorCitacao"></footer>
+    </blockquote>
+    <button id="btnNovaCitacao">Gerar Nova Citação</button>
+
+
+    <script>
+        const textoCitacaoEl = document.getElementById('textoCitacao');
+const autorCitacaoEl = document.getElementById('autorCitacao');
+const btnNovaCitacao = document.getElementById('btnNovaCitacao');
+
+const citacoes = [
+    {
+        texto: "A única maneira de fazer um ótimo trabalho é amar o que você faz.",
+        autor: "Steve Jobs"
+    },
+    {
+        texto: "A persistência é o caminho do êxito.",
+        autor: "Charles Chaplin"
+    },
+    // ... mais citações
+];
+function gerarNovaCitacao() {
+    // Gera um número aleatório entre 0 e o tamanho do array - 1
+    const indiceAleatorio = Math.floor(Math.random() * citacoes.length);
+    
+    // Seleciona uma citação aleatória do array
+    const citacaoSorteada = citacoes[indiceAleatorio];
+
+    // Atualiza o HTML com o texto e o autor
+    textoCitacaoEl.textContent = `"${citacaoSorteada.texto}"`;
+    autorCitacaoEl.textContent = `— ${citacaoSorteada.autor}`;
+}
+btnNovaCitacao.addEventListener('click', gerarNovaCitacao);
+
+// Gera a primeira citação ao carregar a página
+gerarNovaCitacao();
+
+    </script>
+</div>
+</body>
+</html>
